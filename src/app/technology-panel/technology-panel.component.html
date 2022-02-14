@@ -1,0 +1,24 @@
+<div class="card" style="width: 40%;">
+  <div class="card-body">
+    <div class="row">
+      <h3 class="card-title">{{category}}</h3>
+      <div class="col-lg-3 col-sm-12">
+        <h5>Assess</h5>
+        <li *ngFor="let tech of getAllTechnologyByStatus('assess')"> 
+          {{ tech }}
+        </li>
+
+
+      </div>
+      <div class="col-lg-3 col-sm-12">
+        <h5>Trial</h5>
+      </div>
+      <div class="col-lg-3 col-sm-12">
+        <h5>Adopt</h5>
+      </div>
+      <div class="col-lg-3 col-sm-12">
+        <h5>Hold</h5>
+      </div>
+    </div>
+  </div>
+</div>
