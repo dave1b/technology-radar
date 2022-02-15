@@ -1,0 +1,30 @@
+$margin: 5px;
+$auqua: #69b5b2;
+$lightPink: #dd9ce2;
+$lightGreen: #b6efcb;
+$lightOrange: #efeab6;
+$padding: 3px;
+$borderRadius: 5px;
+
+@mixin techItem {
+    margin: $margin;
+    padding: $padding;
+    border-radius: $borderRadius;
+}
+
+.techItemA {
+    @include techItem();
+    background-color: $auqua;
+}
+.techItemB {
+    @include techItem();
+    background-color: $lightPink;
+}
+.techItemC {
+    @include techItem();
+    background-color: $lightGreen;
+}
+.techItemD {
+    @include techItem();
+    background-color: $lightOrange;
+}
