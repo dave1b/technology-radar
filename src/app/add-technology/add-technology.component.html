@@ -1,12 +1,20 @@
 <br>
 <br>
 <div class="formContainer">
-    <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
+    <form [formGroup]="adTechForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
             <label>
                 Name:
             </label>
-            <input formControlName="name" placeholder="Your name" class="form-control">
+            <input formControlName="name" placeholder="Name of Technology" class="form-control">
+            <div *ngIf="getControl['name'].touched && getControl['name'].invalid" class="text-danger">
+                <div *ngIf="getControl['name'].errors && getControl['name']errors['required']" class="text-danger">
+                    insert name
+                  </div>
+                <div *ngIf="getControl['name'].errors?.['minlength']" class="text-danger">
+                   min 3 chars
+                  </div>             
+              </div>
         </div>
         
         <div class="form-group">
@@ -24,7 +32,7 @@
         
         <div class="form-group">
             <label>
-                Category:
+                Status:
             </label>
             <select formControlName="status" class="form-control">
                 <option value="none" selected disabled hidden>Select an Category</option>
