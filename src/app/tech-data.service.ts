@@ -16,9 +16,12 @@ export class TechDataService {
   public getAllPublishedByCategory(technology: string) :Observable<[Technology]> {
     return this.http.get<[Technology]>(this.baseURL+"getAllPublishedByCategory/"+technology);
   }
+
+  public getAllUnpublished() :Observable<[Technology]> {
+    return this.http.get<[Technology]>(this.baseURL+"getAllUnpublished/");
+  }
   
   public getByName(name: string) :Observable<Technology> {
-    console.log("in get by name");
     return this.http.get<Technology>(this.baseURL+"getByName/"+name);
   }
 
@@ -27,26 +30,14 @@ export class TechDataService {
   }
 
   public addNewTechnology(newTechnology: Technology) {
-    this.http.post(this.baseURL+'addNewTechnology', newTechnology).subscribe(data => {
-      console.log(data);
-    })
+    return this.http.post(this.baseURL+'addNewTechnology', newTechnology);
   }
-
-  public changeTechnologyByName( name?: string, category?: string, description?: string){
-    var obj = { 
-      name: name,  
-      category: category,  
-      description: description,  
-   };
-    return this.http.post(this.baseURL+"changeTechnologyById", obj);
+  
+  public editTechnology(edittedTechnology: Technology){
+    this.http.post(this.baseURL+'editTechnology', edittedTechnology).subscribe(
+      res => console.log(res),
+      err => console.log(err)
+    )
   }
-
-
-
-
-
-
-
-
 
 }
