@@ -22,7 +22,7 @@ export class TechnologyPanelComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.techDataService.getAllByCategory(this.category).subscribe(data => {
+    this.techDataService.getAllPublishedByCategory(this.category).subscribe(data => {
       this.arrayOfTechnology = data;
     });
   }

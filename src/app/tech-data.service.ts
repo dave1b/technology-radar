@@ -13,8 +13,8 @@ export class TechDataService {
 
   constructor(private http: HttpClient) { }
 
-  public getAllByCategory(technology: string) :Observable<[Technology]> {
-    return this.http.get<[Technology]>(this.baseURL+"getAllByCategory/"+technology);
+  public getAllPublishedByCategory(technology: string) :Observable<[Technology]> {
+    return this.http.get<[Technology]>(this.baseURL+"getAllPublishedByCategory/"+technology);
   }
   
   public getByName(name: string) :Observable<Technology> {
@@ -26,8 +26,10 @@ export class TechDataService {
     return this.http.post(this.baseURL+id, newStatus);
   }
 
-  public addNewTechnology(newTechnology: object){
-    return this.http.post(this.baseURL+"addTechnology", newTechnology);
+  public addNewTechnology(newTechnology: Technology) {
+    this.http.post(this.baseURL+'addNewTechnology', newTechnology).subscribe(data => {
+      console.log(data);
+    })
   }
 
   public changeTechnologyByName( name?: string, category?: string, description?: string){

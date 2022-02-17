@@ -8,11 +8,11 @@
             </label>
             <input formControlName="name" placeholder="Name of Technology" class="form-control">
             <div *ngIf="getControl['name'].touched && getControl['name'].invalid" class="text-danger">
-                <div *ngIf="getControl['name'].errors && getControl['name']errors['required']" class="text-danger">
-                    insert name
+                <div *ngIf="getControl['name'].errors && getControl['name'].errors['required']" class="text-danger">
+                    Insert a Name 
                   </div>
-                <div *ngIf="getControl['name'].errors?.['minlength']" class="text-danger">
-                   min 3 chars
+                <div *ngIf="getControl['name'].errors && getControl['name'].errors?.['minlength']" class="text-danger">
+                   The name must contain at least 3 characters
                   </div>             
               </div>
         </div>
@@ -21,26 +21,26 @@
             <label>
                 Category:
             </label>
-            <select formControlName="category" class="form-control">
-                <option value="none" selected disabled hidden>Select an Category</option>
-                <option value="Techniques">Techniques</option>
-                <option value="Tools">Tools</option>
-                <option value="Platforms">Platforms</option>
-                <option value="Languages & Frameworks">Languages & Frameworks</option>
+            <select formControlName="category" class="form-control form-select bootstrap-select">
+                <option value="">-- Please choose a category --</option>
+                <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
             </select>
+            <div *ngIf="getControl['category'].touched && getControl['category'].invalid" class="text-danger">
+                Select a category
+            </div>
         </div>
         
         <div class="form-group">
             <label>
                 Status:
             </label>
-            <select formControlName="status" class="form-control">
-                <option value="none" selected disabled hidden>Select an Category</option>
-                <option value="Assess">Assess</option>
-                <option value="Trial">Trial</option>
-                <option value="Adopt">Adopt</option>
-                <option value="Hold">Hold</option>
+            <select formControlName="status" class="form-control form-select ">
+                <option value="">-- Please choose a status --</option>
+                <option *ngFor="let status of statuses" [value]="status" >{{ status }}</option>
             </select>
+            <div *ngIf="getControl['status'].touched && getControl['status'].invalid" class="text-danger">
+                Select a category
+                </div>
         </div>
         
         <div class="form-group">
@@ -49,6 +49,14 @@
             </label>
             <textarea  formControlName="description" placeholder="Description" class="form-control">
             </textarea>
+            <div *ngIf="getControl['description'].touched && getControl['description'].invalid" class="text-danger">
+            <div *ngIf="getControl['description'].errors && getControl['description'].errors['required']" class="text-danger">
+                Insert a Description
+              </div>
+            <div *ngIf="getControl['description'].errors && getControl['description'].errors?.['minlength']" class="text-danger">
+               The Description must contain at least 10 characters
+              </div>             
+          </div>
         </div>
         
         <div class="form-group">
@@ -58,15 +66,24 @@
             <textarea  formControlName="description" placeholder="Description" class="form-control">
             </textarea>
         </div>
-        <div class="form-group">
-            
+        <div class="form-group">          
             <label>
                 Author:
             </label>
-            <input formControlName="author" placeholder="Your name" class="form-control">
+            <input formControlName="author" placeholder="Name of author" class="form-control">
+            <div *ngIf="getControl['author'].touched && getControl['author'].invalid" class="text-danger">
+                <div *ngIf="getControl['author'].errors && getControl['author'].errors['required']" class="text-danger">
+                    Insert the name of the author 
+                  </div>
+                <div *ngIf="getControl['author'].errors && getControl['author'].errors?.['minlength']" class="text-danger">
+                   The name must contain at least 3 characters
+                  </div>             
+              </div>
         </div>
-    
-        <button type="submit" class="btn btn-primary">Send</button>
+        <div class="form-group">
+            <input type="checkbox" formControlName="published"> Publish Technology
+        </div>
+        <button type="submit" class="btn btn-primary" > Save Technology </button>
+        
     </form>
-    
 </div>

@@ -13,58 +13,66 @@ import { Technology } from '../technology';
 export class AddTechnologyComponent implements OnInit {
   adTechForm!: FormGroup;
   submitted = false;
+  categories: string[] = ['Techniques', 'Tools', 'Platforms', 'Languages & Frameworks'];
+  statuses: string[] = ['Assess', 'Trial', 'Adopt', 'Hold'];
+
 
 
   constructor(private formBuilder: FormBuilder, private techDataService: TechDataService, private router: Router) { }
 
   ngOnInit(): void {
     this.adTechForm = this.formBuilder.group({
-      
-      name: ['', Validators.required, Validators.minLength(6)],
+      name: ['', [Validators.required, Validators.minLength(3)]],
       category: ['', Validators.required],
       status: ['', Validators.required],
-      description: ['', Validators.required],
+      description: ['', [Validators.required, Validators.minLength(10)]],
       statusDescription: ['',],
-      author: ['', Validators.required],
+      author: ['', [Validators.required, Validators.minLength(3)]],
       created: [''],
+      published: [''],
     });
+
   }
 
   onSubmit() {
-    this.submitted = true;
 
     // stop here if form is invalid
     console.log('Valid?', this.adTechForm.valid); // true or false
     if (this.adTechForm!.invalid) {
-        return;
+      //return;
     }
+
     /*
-    console.log('Name', form.value.name);
-    console.log('Category', form.value.category);
-    console.log('Status', form.value.status);
-    console.log('description', form.value.description); 
-    console.log('statusDescription', form.value.statusDescription); 
-    console.log('author', form.value.author); 
-    console.log('created', form.value.created); 
+    console.log('Name', this.adTechForm.value.name);
+    console.log('Category', this.adTechForm.value.category);
+    console.log('Status', this.adTechForm.value.status);
+    console.log('description', fothis.adTechFormrm.value.description); 
+    console.log('statusDescription', this.adTechForm.value.statusDescription); 
+    console.log('author', this.adTechForm.value.author); 
+    console.log('created', this.adTechForm.value.created); 
     */
-    var date =  new Date();
+    this.submitted = true;
+    var published = this.adTechForm.value.published === true ? true : false;
+    console.log('Published', published);
+    var date = new Date();
     var dateTimeStamp = date.toLocaleDateString() + " " + date.toLocaleTimeString();
     var newObject: Technology = {
-    name: this.adTechForm.value.name,
-    category: this.adTechForm.value.category,
-    status: this.adTechForm.value.status,
-    description: this.adTechForm.value.description,
-    statusDescription: this.adTechForm.value.statusDescription,
-    author: this.adTechForm.value.author,
-    created: dateTimeStamp,
+      name: this.adTechForm.value.name,
+      category: this.adTechForm.value.category,
+      status: this.adTechForm.value.status,
+      description: this.adTechForm.value.description,
+      statusDescription: this.adTechForm.value.statusDescription,
+      author: this.adTechForm.value.author,
+      created: dateTimeStamp,
+      published: published
     }
-    //console.log(newObject);
+    console.log(newObject);
     this.techDataService.addNewTechnology(newObject);
     this.router.navigate(['']);
-}
+  }
 
-get getControl() {
-  return this.adTechForm.controls;
-}
+  get getControl() {
+    return this.adTechForm.controls;
+  }
 
 }

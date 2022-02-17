@@ -7,6 +7,7 @@ export interface Technology {
     statusDescription?: string;
     author?: string;
     created?: string;
+    published?: boolean;
     history?: [Change];
 }
 
