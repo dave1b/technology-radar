@@ -8,7 +8,7 @@ export interface Technology {
     author?: string;
     created?: string;
     published?: boolean;
-    history?: [Change];
+    history?: Change[];
 }
 
 export interface Change {
