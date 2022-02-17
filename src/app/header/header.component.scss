@@ -1,0 +1,18 @@
+$loggedIn : rgb(98, 255, 138);
+$loggedIn2 : rgb(160, 251, 224);
+$loggedOut : #dc3545;
+
+.loggedIn {
+    color: $loggedIn;
+}
+.loggedOut {
+    color: $loggedOut;
+}
+
+.left-align span {
+    margin-right: 12px;
+    text-align: right;
+    font-size: smaller;
+}
+
+
