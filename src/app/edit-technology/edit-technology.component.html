@@ -1,0 +1,125 @@
+<br>
+<br>
+<div class="formContainer">
+    <form [formGroup]="editTechForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label>
+                Name:
+            </label>
+            <input formControlName="name" class="form-control">
+            <div *ngIf="getControl['name'].touched && getControl['name'].invalid" class="text-danger">
+                <div *ngIf="getControl['name'].errors && getControl['name'].errors['required']" class="text-danger">
+                    Insert a Name
+                </div>
+                <div *ngIf="getControl['name'].errors && getControl['name'].errors?.['minlength']" class="text-danger">
+                    The name must contain at least 3 characters
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>
+                Category:
+            </label>
+            <select formControlName="category" class="form-control form-select bootstrap-select">
+                <option value="">-- Please choose a category --</option>
+                <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+            </select>
+            <div *ngIf="getControl['category'].touched && getControl['category'].invalid" class="text-danger">
+                Select a category
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>
+                Status:
+            </label>
+            <select formControlName="status" class="form-control form-select ">
+                <option value="">-- Please choose a status --</option>
+                <option *ngFor="let status of statuses" [value]="status">{{ status }}</option>
+            </select>
+            <div *ngIf="getControl['status'].touched && getControl['status'].invalid" class="text-danger">
+                Select a category
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>
+                Description:
+            </label>
+            <textarea formControlName="description" placeholder="Description" class="form-control">
+            </textarea>
+            <div *ngIf="getControl['description'].touched && getControl['description'].invalid" class="text-danger">
+                <div *ngIf="getControl['description'].errors && getControl['description'].errors['required']"
+                    class="text-danger">
+
+                    Insert a Description
+                </div>
+                <div *ngIf="getControl['description'].errors && getControl['description'].errors?.['minlength']"
+                    class="text-danger">
+                    The Description must contain at least 10 characters
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>
+                Status Description (optional):
+            </label>
+            <textarea formControlName="description" placeholder="Description" class="form-control">
+            </textarea>
+        </div>
+        <div class="form-group">
+            <label>
+                Author:
+            </label>
+            <input formControlName="author" placeholder="Name of author" class="form-control">
+            <div *ngIf="getControl['author'].touched && getControl['author'].invalid" class="text-danger">
+                <div *ngIf="getControl['author'].errors && getControl['author'].errors['required']" class="text-danger">
+                    Insert the name of the author
+                </div>
+                <div *ngIf="getControl['author'].errors && getControl['author'].errors?.['minlength']"
+                    class="text-danger">
+                    The name must contain at least 3 characters
+                </div>
+            </div>
+        </div>
+
+        <div class="form-check form-switch">
+
+            <div class="form-group">
+
+                
+                <input class="form-check-input " type="checkbox" id="flexSwitchCheckDefault"  formControlName="published">
+                <label class="form-check-label" for="flexSwitchCheckDefault">Publish Technology</label>
+               
+            </div>
+            
+            
+        </div>
+
+
+        <button type="submit" class="btn btn-primary" [disabled]="editTechForm.invalid"> Save Technology </button>
+        <br>
+        <br>
+        <br>
+
+        <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  History of Changes:
+                </button>
+              </h2>
+              <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <li class="list-group-item" *ngFor="let edit of tech.history">Changed by: {{edit.author}} at {{edit.created}}</li> 
+                </div>
+            </div>
+            </div>
+
+        </div>
+        </form>
+    </div>
+    
+    
