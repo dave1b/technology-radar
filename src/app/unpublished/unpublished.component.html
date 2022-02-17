@@ -1,0 +1,27 @@
+<div class="card">
+  <div class="card-body">
+    <div class="row">
+      <h3 class="card-title">Unpublished Technologies:</h3>
+      <div class="col-lg-4 col-sm-12 col-md-6">
+
+        <div class="list-group">
+          <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+            List Currently unpublished Technologies
+          </a>
+
+          <span *ngFor="let tech of unpublished">
+            <button type="button" class="list-group-item list-group-item-action" [routerLink]="['/edit/'+tech.name]">{{
+              tech.name }}</button>
+          </span>
+
+        </div>
+
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+</div>
