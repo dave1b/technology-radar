@@ -1,0 +1,39 @@
+<div class="formContainer" *ngIf="!isLoggedIn()">
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label>
+                Username:
+            </label>
+            <input formControlName="email" placeholder="" class="form-control">
+            <div *ngIf="getControl['email'].touched && getControl['email'].invalid" class="text-danger">
+                <div *ngIf="getControl['email'].errors && getControl['email'].errors['required']" class="text-danger">
+                    Insert your username
+                </div>        
+            </div>
+        </div>
+        <div class="form-group">
+            <label>
+                Password:
+            </label>
+            <input formControlName="pwd" placeholder="" type="password" class="form-control">
+            <div *ngIf="getControl['pwd'].touched && getControl['pwd'].invalid" class="text-danger">
+                <div *ngIf="getControl['pwd'].errors && getControl['pwd'].errors['required']" class="text-danger">
+                    Insert your password
+                </div>        
+            </div>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid" > Login </button>
+    </form>
+    
+</div>
+
+<div class="formContainer" *ngIf="isLoggedIn()">
+    <div class="alert alert-success" role="alert">
+        Your are logged in!
+    </div>
+    <div style="text-align: center;">
+        <img src="https://c.tenor.com/Cyr2PR6E3kkAAAAC/sacha-baron.gif">
+    </div>
+</div>
