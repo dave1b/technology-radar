@@ -15,9 +15,7 @@ export class AddTechnologyComponent implements OnInit {
   submitted = false;
   categories: string[] = ['Techniques', 'Tools', 'Platforms', 'Languages & Frameworks'];
   statuses: string[] = ['Assess', 'Trial', 'Adopt', 'Hold'];
-
-
-
+  
   constructor(private formBuilder: FormBuilder, private techDataService: TechDataService, private router: Router) { }
 
   ngOnInit(): void {
@@ -36,21 +34,11 @@ export class AddTechnologyComponent implements OnInit {
 
   onSubmit() {
 
-    // stop here if form is invalid
-    console.log('Valid?', this.adTechForm.valid); // true or false
+    console.log('Valid?', this.adTechForm.valid);
     if (this.adTechForm!.invalid) {
-      //return;
+      return;
     }
 
-    /*
-    console.log('Name', this.adTechForm.value.name);
-    console.log('Category', this.adTechForm.value.category);
-    console.log('Status', this.adTechForm.value.status);
-    console.log('description', fothis.adTechFormrm.value.description); 
-    console.log('statusDescription', this.adTechForm.value.statusDescription); 
-    console.log('author', this.adTechForm.value.author); 
-    console.log('created', this.adTechForm.value.created); 
-    */
     this.submitted = true;
     var published = this.adTechForm.value.published === true ? true : false;
     console.log('Published', published);
@@ -67,12 +55,10 @@ export class AddTechnologyComponent implements OnInit {
       published: published
     }
     console.log(newObject);
-    this.techDataService.addNewTechnology(newObject);
+    this.techDataService.addNewTechnology(newObject)
     this.router.navigate(['']);
   }
-
   get getControl() {
     return this.adTechForm.controls;
   }
-
 }
