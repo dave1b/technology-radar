@@ -1,15 +1,19 @@
-$margin: 5px;
-$auqua: #69b5b2;
+$margin: 10px;
+$marginLeft: 0px;
+$auqua: #8ccfcd;
 $lightPink: #dd9ce2;
 $lightGreen: #b6efcb;
 $lightOrange: #efeab6;
-$padding: 3px;
+$padding: 6px;
 $borderRadius: 5px;
 
 @mixin techItem {
     margin: $margin;
+    margin-left: $marginLeft;
     padding: $padding;
     border-radius: $borderRadius;
+    cursor: pointer; 
+    border: #8ccfcd00 solid 2px;
 }
 
 .techItemA {
@@ -27,4 +31,18 @@ $borderRadius: 5px;
 .techItemD {
     @include techItem();
     background-color: $lightOrange;
+}
+
+.techItemHover:hover {
+    border: solid rgb(95, 95, 95) 2px;
+    transition: 0.3s;
+}
+
+h5 {
+    margin-bottom: 15px;
+    margin-top: -10px;
+}
+h2 {
+    margin-left: 5px;
+    margin-top: 10px;
 }
