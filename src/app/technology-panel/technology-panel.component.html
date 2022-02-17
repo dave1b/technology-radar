@@ -1,34 +1,36 @@
 <div class="card">
+  <h2 class="card-title">{{category}}</h2>
   <div class="card-body">
     <div class="row">
-      <h3 class="card-title">{{category}}</h3>
       <div class="col-lg-3 col-sm-12">
         <h5>Assess</h5>
         <span *ngFor="let tech of getAllTechnologyByStatus('Assess')" [routerLink]="['technologies/'+tech.name]"
-          class="techItemA">
+          class="techItemA techItemHover">
           {{ tech.name }}
         </span>
       </div>
       <div class="col-lg-3 col-sm-12">
         <h5>Trial</h5>
         <span *ngFor="let tech of getAllTechnologyByStatus('Trial')" [routerLink]="['technologies/'+tech.name]"
-          class="techItemB">
+          class="techItemB techItemHover">
           {{ tech.name }}
         </span>
       </div>
       <div class="col-lg-3 col-sm-12">
         <h5>Adopt</h5>
         <span *ngFor="let tech of getAllTechnologyByStatus('Adopt')" [routerLink]="['technologies/'+tech.name]"
-          class="techItemC">
+          class="techItemC techItemHover">
           {{ tech.name }}
         </span>
       </div>
       <div class="col-lg-3 col-sm-12">
         <h5>Hold</h5>
         <span *ngFor="let tech of getAllTechnologyByStatus('Hold')" [routerLink]="['technologies/'+tech.name]"
-          class="techItemD">
+          class="techItemD techItemHover">
           {{ tech.name }}
         </span>
+        <br>
+        <br>
       </div>
     </div>
   </div>
