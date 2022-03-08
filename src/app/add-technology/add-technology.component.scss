@@ -1,15 +1,11 @@
-$witdh: 90%;
-$max-width: 1000px;
-
-
-
+$witdh: 100%;
+$max-width: 800px;
 
 .formContainer {
     width: $witdh;
     max-width: $max-width;  
     margin: auto;
-    padding: 20px;
-  //  background-color: rgb(182, 184, 185);
+    padding: 12px;
     border-radius: 10px;
 }
 

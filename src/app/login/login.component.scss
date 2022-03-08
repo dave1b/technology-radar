@@ -1,21 +1,4 @@
-$witdh: 90%;
-$max-width: 1000px;
-
-
-
-
-.formContainer {
-    width: $witdh;
-    max-width: $max-width;  
-    margin: auto;
-    padding: 20px;
-  //  background-color: rgb(182, 184, 185);
-    border-radius: 10px;
-}
-
-.form-group {
-    margin-bottom: 15px;
-}
-.form-control {
-    border: rgb(160, 160, 160) solid;
+h1 {
+    margin: 15px;
+    margin-bottom: -10px;
 }
