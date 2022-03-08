@@ -1,1 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
+$witdh: 100%;
+$max-width: 800px;
+
+
+
+
+.formContainer {
+    width: $witdh;
+    max-width: $max-width;  
+    margin: auto;
+    padding: 12px;
+    border-radius: 10px;
+}
+
