@@ -1,6 +1,9 @@
 <br>
-<br>
 <div class="formContainer">
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+    <h1>Edit Technology</h1>
     <form [formGroup]="editTechForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
             <label>
@@ -36,7 +39,7 @@
             </label>
             <select formControlName="status" class="form-control form-select ">
                 <option value="">-- Please choose a status --</option>
-                <option *ngFor="let status of statuses" [value]="status">{{ status }}</option>
+                <option *ngFor="let status of statuses" [value]="status">{{status}}</option>
             </select>
             <div *ngIf="getControl['status'].touched && getControl['status'].invalid" class="text-danger">
                 Select a category
@@ -47,7 +50,7 @@
             <label>
                 Description:
             </label>
-            <textarea formControlName="description" placeholder="Description" class="form-control">
+            <textarea formControlName="description" placeholder="write a description of the Technology" class="form-control">
             </textarea>
             <div *ngIf="getControl['description'].touched && getControl['description'].invalid" class="text-danger">
                 <div *ngIf="getControl['description'].errors && getControl['description'].errors['required']"
@@ -66,8 +69,14 @@
             <label>
                 Status Description (optional):
             </label>
-            <textarea formControlName="description" placeholder="Description" class="form-control">
+            <textarea formControlName="statusDescription" placeholder="write a status description" class="form-control">
             </textarea>
+            <div *ngIf="getControl['statusDescription'].invalid" class="text-danger">
+                <div *ngIf="getControl['statusDescription'].errors && getControl['statusDescription'].errors['required']"
+                    class="text-danger">
+Due to a change to the Status of the Technology this field is required.
+                </div>
+            </div>
         </div>
         <div class="form-group">
             <label>
@@ -98,7 +107,6 @@
             
         </div>
 
-
         <button type="submit" class="btn btn-primary" [disabled]="editTechForm.invalid"> Save Technology </button>
         <br>
         <br>
@@ -113,13 +121,10 @@
               </h2>
               <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                 <div class="accordion-body">
-                    <li class="list-group-item" *ngFor="let edit of tech.history">Changed by: {{edit.author}} at {{edit.created}}</li> 
+                    <li class="list-group-item" *ngFor="let edit of tech.history?.reverse()">Changed by: {{edit.author}} at {{edit.created}}</li> 
                 </div>
             </div>
             </div>
-
         </div>
         </form>
     </div>
-    
-    
