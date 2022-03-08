@@ -25,19 +25,15 @@ export class TechDataService {
     return this.http.get<Technology>(this.baseURL+"getByName/"+name);
   }
 
-  public changeStatusById(id: number, newStatus: string){
-    return this.http.post(this.baseURL+id, newStatus);
-  }
-
   public addNewTechnology(newTechnology: Technology) {
-    return this.http.post(this.baseURL+'addNewTechnology', newTechnology);
+    this.http.post(this.baseURL+'addNewTechnology', newTechnology).subscribe();
   }
   
-  public editTechnology(edittedTechnology: Technology){
-    this.http.post(this.baseURL+'editTechnology', edittedTechnology).subscribe(
-      res => console.log(res),
-      err => console.log(err)
-    )
+  public editTechnology(edittedTechnology: Technology, oldName: string){
+    var payload = { technology: edittedTechnology,
+      name: oldName
+    }
+    this.http.post(this.baseURL+'editTechnology', payload).subscribe();
   }
 
 }
