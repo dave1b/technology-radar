@@ -1,6 +1,15 @@
-
+$witdh: 100%;
+$max-width: 800px;
 
 .unpublishedItem {
     display:block;
     margin: 10px;
+}
+
+.formContainer {
+    width: $witdh;
+    max-width: $max-width;  
+    margin: auto;
+    padding: 12px;
+    border-radius: 10px;
 }
