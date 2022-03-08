@@ -8,6 +8,8 @@ import { AuthService } from '../auth.service';
 })
 export class HeaderComponent implements OnInit {
 
+  logoutPressed: boolean = false;
+
   constructor(private authService: AuthService) { }
   ngOnInit(): void {
   }
@@ -16,5 +18,6 @@ export class HeaderComponent implements OnInit {
   }
   logoutUser() {
     this.authService.logoutUser();
+    this.logoutPressed = true;
   }
 }
