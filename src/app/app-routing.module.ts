@@ -12,7 +12,7 @@ import { UnpublishedComponent } from './unpublished/unpublished.component';
 
 const routes: Routes = [
   { path: 'technologies/:name', component: DetailViewComponent },
-  { path: 'edit/:name', component: EditTechnologyComponent },
+  { path: 'edit/:name', component: EditTechnologyComponent, canActivate: [AuthGuard]  },
   { path: '', component: PanelContainerComponent },
   { path: 'addTechnology', component: AddTechnologyComponent, canActivate: [AuthGuard]  },
   { path: 'login', component: LoginComponent },
