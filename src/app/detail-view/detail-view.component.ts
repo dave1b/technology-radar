@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { TechDataService } from '../tech-data.service';
 import { Technology } from '../technology';
 import { ActivatedRoute, Params } from '@angular/router';
-
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-detail-view',
@@ -13,13 +13,12 @@ export class DetailViewComponent implements OnInit {
 
   name: string = "";
   tech: Technology = {};
-  constructor(private techDataService: TechDataService, private router: ActivatedRoute) { }
+  constructor(private techDataService: TechDataService, private router: ActivatedRoute, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.router.params.subscribe(
     (params: Params) => {
       this.name = params['name'];
-      console.log(this.name);
       this.getTechnologyByName(this.name);
     }
     );
@@ -31,6 +30,7 @@ export class DetailViewComponent implements OnInit {
     });
   }
 
-  
-
+  isLoggedIn(): boolean {
+    return this.authService.isLoggedIn();
+  }
 }
