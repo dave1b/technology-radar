@@ -1,5 +1,4 @@
 export interface Technology {
-    id?: string;
     name?: string;
     category?: string;
     status?: string;
